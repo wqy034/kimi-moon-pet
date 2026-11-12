@@ -1,0 +1,43 @@
+@import url("surface.css");
+* { box-sizing: border-box; }
+html,body { margin: 0; height: 100%; background: transparent; overflow: hidden; user-select: none; }
+body { padding: 8px; color: #eeeafc; font: 13px/1.5 "Microsoft YaHei", sans-serif; }
+.extension-shell { height: 100%; display: flex; flex-direction: column; padding: 8px 12px 12px;
+ border: 1px solid #d8c7ed55; border-radius: 20px; background: var(--moon-panel); box-shadow: 0 3px 10px #10132530; }
+.extension-header { flex: none; display: flex; align-items: center; gap: 8px; padding: 3px 0 12px; cursor: grab; touch-action: none; }
+.extension-header:active { cursor: grabbing; }
+.extension-moon { color: #eedaa6; font: 25px Georgia,serif; }
+.extension-title { font-size: 12px; letter-spacing: 1px; color: #d8c9ee; }
+.extension-subtitle { color: #a69bbf; font-size: 10px; letter-spacing: 0; }
+.extension-controls { display: flex; gap: 3px; margin-left: auto; }
+button { display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px; border: 1px solid transparent; border-radius: 9px; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+button:hover,button:focus-visible { background: #c2afe51c; border-color: #c2afe538; }
+button:focus-visible,summary:focus-visible { outline: 2px solid #eedaa6; outline-offset: 1px; }
+button:disabled { opacity: .5; cursor: default; }
+.extension-controls button { justify-content: center; width: 30px; height: 30px; padding: 6px; }
+.extension-controls button[aria-pressed=true] { color: #eedaa6; background: #dcc49a16; }
+.extension-controls svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.hint { color: #aaa3bf; font-size: 10px; line-height: 1.7; }
+[hidden] { display: none !important; }
+#extension-error { flex: none; color: #f0b8c8; font-size: 11px; overflow-wrap: anywhere; }
+.resize { position: fixed; z-index: 20; touch-action: none; }
+.resize[data-resize=North],.resize[data-resize=South] { left: 13px; right: 13px; height: 7px; cursor: ns-resize; }
+.resize[data-resize=North] { top: 2px; } .resize[data-resize=South] { bottom: 2px; }
+.resize[data-resize=West],.resize[data-resize=East] { top: 13px; bottom: 13px; width: 7px; cursor: ew-resize; }
+.resize[data-resize=West] { left: 2px; } .resize[data-resize=East] { right: 2px; }
+.resize[data-resize=NorthWest],.resize[data-resize=NorthEast],.resize[data-resize=SouthWest],.resize[data-resize=SouthEast] { width: 14px; height: 14px; }
+.resize[data-resize=NorthWest] { left: 2px; top: 2px; cursor: nwse-resize; }
+.resize[data-resize=NorthEast] { right: 2px; top: 2px; cursor: nesw-resize; }
+.resize[data-resize=SouthWest] { left: 2px; bottom: 2px; cursor: nesw-resize; }
+.resize[data-resize=SouthEast] { right: 2px; bottom: 2px; cursor: nwse-resize; border-right: 2px dotted #ad9bce80; border-bottom: 2px dotted #ad9bce80; border-radius: 0 0 7px 0; }
+
+/* 生活与琴盘沿用已确认的月夜轻透外观。 */
+body:is([data-extension=life],[data-extension=music]) .extension-shell {
+ /* 外壳保留桌面透视；文字和操作区再用轻量底色，不重复叠加实色面板。 */
+ background:var(--moon-panel);
+ border-color:#d8c7ed55; box-shadow:0 3px 10px #10132530; border-radius:20px;
+}
+body:is([data-extension=life],[data-extension=music]) .extension-header { padding-bottom:5px; }
+body:is([data-extension=life],[data-extension=music]) .extension-title { color:#eee5f8; font-size:13px; letter-spacing:.5px; }
+body:is([data-extension=life],[data-extension=music]) .hint { color:#c4bcd3; }
+body:is([data-extension=life],[data-extension=music]) button:disabled { opacity:.6; }

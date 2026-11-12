@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moon·月 · 对话</title>
+<link rel="stylesheet" href="surface.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: transparent; overflow: hidden; user-select: none; }
+  body { padding: 10px; color: #eeeafc; font: 13px/1.65 "Microsoft YaHei", sans-serif; }
+  .card { position: relative; padding: 14px 16px; border: 1px solid #a99ade80;
+    border-radius: 18px 18px 18px 6px;
+    background: var(--moon-panel-strong);
+    box-shadow: 0 3px 8px #10132555, inset 0 1px #ffffff0d;
+    animation: appear .18s ease-out; }
+  .card::after { content: ""; position: absolute; bottom: -5px; left: calc(50% - 5px);
+    width: 8px; height: 8px; transform: rotate(45deg); background: var(--moon-tail);
+    border-right: 1px solid #a99ade80; border-bottom: 1px solid #a99ade80; }
+  body[data-placement="side"] .card::after, body[data-placement="below"] .card::after { display: none; }
+  header { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; font-size: 10px; letter-spacing: 2px; color: #c4b6ee;
+    cursor: grab; touch-action: none; }
+  header:active { cursor: grabbing; }
+  .moon { color: #f0dfa7; font: 18px/1 Georgia, serif; }
+  .spark { margin-left: auto; color: #a29ac4; font-size: 13px; }
+  #message { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 154px; overflow: hidden;
+    display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; }
+  #usage { display: grid; gap: 12px; }
+  .row-top { display: flex; align-items: baseline; justify-content: space-between; }
+  .label { color: #eeeafc; font-size: 12px; }
+  .amount { color: #f0dfa7; display: inline-flex; align-items: baseline; gap: 2px;
+    font: 600 17px/1.4 "Segoe UI", sans-serif; font-variant-numeric: tabular-nums; }
+  .amount .unit { font: inherit; }
+  .track { height: 5px; border-radius: 8px; background: #ffffff12; margin: 5px 0; overflow: hidden; }
+  .fill { height: 100%; border-radius: inherit; background: linear-gradient(90deg, #a69cdd, #e2cba0); }
+  .reset { color: #a6a6bf; font-size: 10px; }
+  /* 触摸对白比额度卡片更轻，保留标题拖动入口。 */
+  body:is([data-kind="touch"], [data-kind="daily"]) .card { padding: 10px 14px 12px; border-radius: 18px;
+    border-color: #c5b8ee99;
+    background: var(--moon-panel-strong); }
+  body:is([data-kind="touch"], [data-kind="daily"]) header { margin-bottom: 4px; font-size: 9px; letter-spacing: 1px; }
+  body:is([data-kind="touch"], [data-kind="daily"]) .moon { font-size: 15px; }
+  body:is([data-kind="touch"], [data-kind="daily"]) #message { font-size: 14px; line-height: 1.7;
+    min-height: 24px; max-height: 48px; -webkit-line-clamp: 2; color: #faf5ff; }
+  [hidden] { display: none !important; }
+  body[data-kind=chat] .card { height:176px;display:flex;flex-direction:column;animation:none; }
+  body[data-kind=chat][data-expanded=true] .card {height:238px;}
+  body[data-kind=chat] #message {display:block;flex:1;min-height:0;max-height:none;overflow:auto;-webkit-line-clamp:unset;user-select:text;scrollbar-width:thin;}
+  #chat-controls {display:flex;align-items:center;gap:8px;padding-top:7px;color:#bfb0d0;font-size:10px;}
+  #speech-status {margin-right:auto;}
+  #chat-controls button {border:0;background:#bda6dc18;color:#e6d6ee;border-radius:6px;font:inherit;padding:2px 7px;cursor:pointer;}
+  @keyframes appear { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .card { animation: none; } }
+</style>
+</head>
+<body data-placement="above">
+<section class="card" id="card">
+  <header title="按住标题拖动"><span class="moon">☾</span><span id="title">暗月</span><span class="spark">⠿</span></header>
+  <div id="message"></div>
+  <div id="usage" hidden></div>
+  <div id="chat-controls" hidden><span id="speech-status"></span><button id="speech-expand">展开</button><button id="speech-stop">停止</button><button id="speech-hide">收起</button></div>
+</section>
+<script type="module" src="src/bubble.js"></script>
+</body>
+</html>

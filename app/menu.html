@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Moon·月 · 菜单</title>
+<link rel="stylesheet" href="surface.css">
+<style>
+* { box-sizing: border-box; }
+html,body { margin: 0; background: transparent; overflow: hidden; user-select: none; }
+body { padding: 8px; color: #eeeafc; font: 13px/1.5 "Microsoft YaHei", sans-serif; }
+.menu { padding: 12px 7px 7px; border: 1px solid #a99ade70; border-radius: 17px;
+  background: var(--moon-panel);
+  box-shadow: 0 3px 7px #10132555; }
+header { padding: 0 10px 10px; color: #d0c2ed; font-size: 11px; letter-spacing: 2px;
+  display: flex; align-items: center; cursor: grab; touch-action: none; }
+header:active { cursor: grabbing; }
+header span { color: #eedaa6; font: 20px Georgia,serif; margin-right: 7px; vertical-align: middle; }
+header .grip { margin-left: auto; margin-right: 0; color: #9691b3; font: 15px sans-serif; }
+button { display: flex; align-items: center; gap: 11px; width: 100%; padding: 10px;
+  border: 1px solid transparent; border-radius: 10px; background: transparent; color: inherit;
+  font: inherit; text-align: left; cursor: pointer; outline: none; }
+button:hover,button:focus-visible { background: #c2afe51c; border-color: #c2afe538; }
+svg { width: 17px; height: 17px; fill: none; stroke: #c3b3e6; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.arrow { margin-left: auto; color: #9691b3; }
+.divider { height: 1px; margin: 6px 10px; background: #c2afe51a; }
+.quit { color: #d4afbb; }
+.quit svg { stroke: #c59baa; }
+#error { margin: 4px 10px 0; color: #f0b8c8; font-size: 10px; }
+[hidden] { display: none !important; }
+#preferences { padding: 0 10px 8px; max-height: calc(100vh - 80px); overflow-y: auto; }
+.back { padding: 4px 0 12px; font-size: 12px; color: #cabbeb; }
+.row { margin: 0 0 16px; }
+.row label { display: block; margin-bottom: 8px; color: #d2c9e9; font-size: 12px; }
+.value { float: right; color: #eedaa6; font-variant-numeric: tabular-nums; }
+input[type=range] { width: 100%; accent-color: #b19cd6; }
+.toggle { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; font-size: 12px; }
+input[type=checkbox] { width: 17px; height: 17px; accent-color: #a08cc5; }
+.sleep { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+input[type=number] { width: 68px; padding: 6px; background: #ffffff08; color: #eeeafc; border: 1px solid #a99ade50; border-radius: 8px; font: inherit; }
+#panelStyle { width:100%; padding:7px; color:#eeeafc; background:#292b40; border:1px solid #a99ade70; border-radius:8px; font:inherit; }
+.hint { color: #d1c8df; font-size: 11px; line-height: 1.7; }
+#save { justify-content: center; margin-top: 14px; background: linear-gradient(110deg,#8675bb,#a08cc5); border-color: #cabbec55; }
+button:disabled { opacity: .5; cursor: wait; }
+#saved { min-height: 18px; margin-top: 7px; color: #b8d6c4; font-size: 10px; overflow-wrap: anywhere; }
+input:focus-visible,select:focus-visible { outline: 2px solid #eedaa6; outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="menu" role="menu" aria-label="Moon·月">
+<header title="按住标题拖动"><span>☾</span>Moon·月<span class="grip">⠿</span></header>
+<div id="main-menu">
+<button role="menuitem" data-action="chat_settings"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/></svg>交流设置<span class="arrow">›</span></button>
+<button role="menuitem" data-action="usage"><svg viewBox="0 0 24 24"><path d="M4 18V9m8 9V4m8 14v-6M3 21h18"/></svg>星光额度<span class="arrow">›</span></button>
+<button role="menuitem" data-action="life"><svg viewBox="0 0 24 24"><path d="M4 10h16v11H4zM3 7h18v3H3zM12 7v14M12 7C2 7 6 0 12 7c6-7 10 0 0 0"/></svg>她的小生活<span class="arrow">›</span></button>
+<button role="menuitem" data-action="music"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13M9 7l11-2"/><ellipse cx="6" cy="18" rx="3" ry="2"/><ellipse cx="17" cy="16" rx="3" ry="2"/></svg>小小琴盘<span class="arrow">›</span></button>
+<button role="menuitem" data-action="settings"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3" fill="#29283f"/><circle cx="15" cy="17" r="3" fill="#29283f"/></svg>偏好设置<span class="arrow">›</span></button>
+<div class="divider" role="separator"></div>
+<button role="menuitem" class="quit" data-action="quit"><svg viewBox="0 0 24 24"><path d="M12 3v9m-6-6a9 9 0 1 0 12 0"/></svg>退出桌宠</button>
+</div>
+<div id="preferences" hidden>
+  <button class="back" id="back">‹ 返回 · 偏好设置</button>
+  <div class="row"><label for="scale">体型缩放<span class="value" id="scaleVal">1.0x</span></label>
+    <input type="range" id="scale" min="0.5" max="2.0" step="0.1" value="1.0"></div>
+  <div class="row"><label for="panelStyle">面板背景</label><select id="panelStyle"><option value="light">轻透</option><option value="clear">清晰</option></select></div>
+  <label class="toggle" for="wander">待机时偶尔闲逛<input type="checkbox" id="wander" checked></label>
+  <label class="toggle" for="gaze">视线跟随鼠标<input type="checkbox" id="gaze" checked></label>
+  <label class="toggle" for="dailySpeech">偶尔主动说句话<input type="checkbox" id="dailySpeech" checked></label>
+  <label class="toggle" for="cursorPlay">无聊时逗光标<input type="checkbox" id="cursorPlay" checked></label>
+  <label class="toggle" for="cursorCarry">允许拉动与抱跑真实光标 · 原型<input type="checkbox" id="cursorCarry"></label>
+  <div class="hint">保存后启用；移动鼠标或按键即松手。</div>
+  <div class="divider"></div>
+  <div class="sleep">
+    <div class="row"><label for="lightSleep">白天浅睡 · 分钟</label><input type="number" id="lightSleep" min="1" max="30" value="15"></div>
+    <div class="row"><label for="deepSleep">白天熟睡 · 分钟</label><input type="number" id="deepSleep" min="2" max="60" value="20"></div>
+    <div class="row"><label for="nightLightSleep">夜间浅睡 · 分钟</label><input type="number" id="nightLightSleep" min="1" max="30" value="5"></div>
+    <div class="row"><label for="nightDeepSleep">夜间熟睡 · 分钟</label><input type="number" id="nightDeepSleep" min="2" max="60" value="10"></div>
+  </div>
+  <div class="hint">夜间为22:00～次日06:00，按电脑本地时间。睡眠时间从开始空闲累计，保存后生效。</div>
+  <div class="hint">大小与开关即时预览。返回或关闭面板，取消未保存的调整。</div>
+  <button id="save">保存偏好</button><div id="saved" role="status"></div>
+</div>
+<div id="error" hidden></div>
+</div>
+<script type="module" src="src/menu.js"></script>
+</body>
+</html>

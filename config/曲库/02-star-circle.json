@@ -1,0 +1,82 @@
+{
+  "id": "star-circle",
+  "version": 1,
+  "title": "星星绕个圈",
+  "bpm": 92,
+  "beats": 15,
+  "credit": "月之少女项目 · 原创练习短句",
+  "notes": [
+    {
+      "key": 0,
+      "oct": 1,
+      "beat": 0,
+      "duration": 0.82
+    },
+    {
+      "key": 2,
+      "oct": 1,
+      "beat": 1,
+      "duration": 0.82
+    },
+    {
+      "key": 4,
+      "oct": 1,
+      "beat": 2,
+      "duration": 0.82
+    },
+    {
+      "key": 0,
+      "oct": 2,
+      "beat": 3,
+      "duration": 0.82
+    },
+    {
+      "key": 6,
+      "oct": 1,
+      "beat": 4,
+      "duration": 0.82
+    },
+    {
+      "key": 4,
+      "oct": 1,
+      "beat": 5,
+      "duration": 0.82
+    },
+    {
+      "key": 2,
+      "oct": 1,
+      "beat": 6,
+      "duration": 0.82
+    },
+    {
+      "key": 1,
+      "oct": 1,
+      "beat": 7,
+      "duration": 0.82
+    },
+    {
+      "key": 0,
+      "oct": 1,
+      "beat": 8,
+      "duration": 1.64
+    },
+    {
+      "key": 4,
+      "oct": 0,
+      "beat": 10,
+      "duration": 0.82
+    },
+    {
+      "key": 6,
+      "oct": 0,
+      "beat": 11,
+      "duration": 0.82
+    },
+    {
+      "key": 0,
+      "oct": 1,
+      "beat": 12,
+      "duration": 1.64
+    }
+  ]
+}

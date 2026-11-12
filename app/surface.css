@@ -1,0 +1,12 @@
+/* 已确认的月夜材质：只改变背景色的透明度，不淡化文字或控件。 */
+:root {
+  --moon-panel: linear-gradient(145deg,rgba(48,42,68,.80),rgba(27,33,52,.80));
+  --moon-panel-strong: linear-gradient(145deg,rgba(48,42,68,.86),rgba(27,33,52,.86));
+  --moon-tail: rgba(27,33,52,.86);
+  --moon-surface: rgba(26,28,47,.26);
+}
+html[data-surface="clear"] {
+  --moon-panel: linear-gradient(145deg,rgba(48,42,68,.96),rgba(27,33,52,.96));
+  --moon-panel-strong: linear-gradient(145deg,rgba(48,42,68,.98),rgba(27,33,52,.98));
+  --moon-tail: rgba(27,33,52,.98);
+}

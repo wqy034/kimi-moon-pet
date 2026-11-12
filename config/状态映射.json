@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "heartbeat_timeout_seconds": 90,
+  "deep_sleep_seconds": 600,
+  "mappings": [
+    { "when": { "hook": "SessionHeartbeat", "heartbeat_age_s": "< 90" }, "set": { "state": "idle" } },
+    { "when": { "hook": "SessionHeartbeat", "heartbeat_age_s": ">= 90" }, "set": { "state": "sleeping" } },
+    { "when": { "wire": "assistant_delta" }, "set": { "state": "streaming" } },
+    { "when": { "wire": "reasoning" }, "set": { "state": "thinking" } },
+    { "when": { "wire": "tool_running", "category": "edit" }, "set": { "state": "writing" } },
+    { "when": { "wire": "tool_running", "category": "read" }, "set": { "state": "reviewing" } },
+    { "when": { "wire": "tool_running", "category": "search" }, "set": { "state": "searching" } },
+    { "when": { "wire": "tool_running", "category": "bash|agent|other" }, "set": { "state": "working" } },
+    { "when": { "wire": "tool_call_frequency_hz", "gt": 0.5 }, "set": { "state": "working" } },
+    { "when": { "wire": "plan_mode", "eq": true }, "set": { "state": "reviewing" } },
+    { "when": { "wire": "approval_pending", "eq": true }, "set": { "state": "waiting" } },
+    { "when": { "wire": "tool_exit_code", "ne": 0 }, "set": { "state": "failed", "afterglow_s": 3 } },
+    { "when": { "hook": "Stop" }, "set": { "state": "celebrating", "afterglow_s": 2.5 } },
+    { "when": { "hook": "Interrupt" }, "set": { "state": "angry", "afterglow_s": 2.5 } },
+    { "when": { "hook": "TurnStarted" }, "set": { "state": "greeting", "afterglow_s": 2 } }
+  ]
+}

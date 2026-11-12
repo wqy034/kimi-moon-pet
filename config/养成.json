@@ -1,0 +1,17 @@
+{
+  "tokens_per_coin": 100000,
+  "starter_coins": 5,
+  "initial": { "food": 85, "water": 85, "energy": 85, "affection": 20 },
+  "decay_per_hour": { "food": 3, "water": 4, "energy": 4, "affection": 0.1 },
+  "sleep_energy_per_hour": 72,
+  "offline_hours_cap": 8,
+  "offline_need_floor": 35,
+  "daily_work_coins_cap": 15,
+  "daily_affection_cap": 3,
+  "items": [
+    { "id": "water", "name": "清水", "icon": "💧", "price": 1, "starter": 2, "effect": { "food": 0, "water": 35, "energy": 0, "affection": 0.2 }, "line": "谢谢……刚好有点渴。" },
+    { "id": "bread", "name": "小面包", "icon": "🍞", "price": 2, "starter": 1, "effect": { "food": 30, "water": 0, "energy": 3, "affection": 0.4 }, "line": "是给我的吗？谢谢。" },
+    { "id": "cake", "name": "草莓蛋糕", "icon": "🍰", "price": 3, "starter": 0, "effect": { "food": 18, "water": 0, "energy": 6, "affection": 1 }, "line": "……草莓看着很甜。" }
+  ],
+  "job": { "id": "books", "name": "整理书架", "duration_seconds": 90, "energy_cost": 12, "minimum_energy": 32, "reward": 3 }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "extension-resize",
+  "description": "仅扩展窗口允许原生边缘缩放",
+  "windows": [
+    "extension-life",
+    "extension-chat",
+    "extension-music"
+  ],
+  "permissions": [
+    "core:window:allow-start-resize-dragging"
+  ]
+}

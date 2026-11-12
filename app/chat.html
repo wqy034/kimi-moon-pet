@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Moon·月 · 交流资料</title>
+<link rel="stylesheet" href="extension.css"><link rel="stylesheet" href="chat.css"></head>
+<body data-extension="chat">
+<main class="extension-shell" aria-label="交流资料">
+<header class="extension-header" title="按住标题拖动">
+ <span class="extension-moon">☾</span><div><div class="extension-title" id="view-title">交流设置</div><div class="extension-subtitle">她身边的交流，小小的整理</div></div>
+ <div class="extension-controls">
+  <button id="extension-pin" aria-label="取消置顶" aria-pressed="true" title="取消置顶"><svg viewBox="0 0 24 24"><path d="M8 3h8l-1 7 4 4H5l4-4zM12 14v7"/></svg></button>
+  <button id="extension-close" aria-label="关闭交流资料" title="关闭"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+ </div>
+</header>
+<div id="extension-error" role="status" hidden></div>
+<nav class="view-tabs" role="tablist" aria-label="交流资料"><button data-view="memory" role="tab">她的记忆</button><button data-view="settings" role="tab">交流设置</button><button data-view="history" role="tab">原始记录</button><button id="continue">回到她身边 ↗</button></nav>
+<section id="memory" aria-label="她整理的记忆" hidden>
+ <div class="settings-heading">一起记住的小事</div>
+ <p class="hint">记忆可能有误或过时。可修正、删除，或展开查看来源。</p>
+ <p id="memory-status" class="hint" role="status"></p>
+ <h2 class="memory-heading">关于你</h2><div id="memory-facts"></div>
+ <h2 class="memory-heading">共同的往事</h2><div id="memory-summaries"></div>
+ <details id="memory-quarantine" hidden><summary>待确认 <span id="memory-quarantine-count"></span></summary><p class="hint">暂不用于回忆，可修正或删除。</p><div id="memory-quarantine-list"></div></details>
+ <details id="memory-held" hidden><summary>候选与留存 <span id="memory-held-count"></span></summary><p class="hint">不自动用于回忆；修正并保存可采纳。</p><div id="memory-held-list"></div></details>
+ <details id="memory-jobs"><summary>整理进度</summary><div id="memory-job-list"></div></details>
+</section>
+<section id="settings">
+ <div class="settings-heading">模型连接 <span id="connection-badge">尚未配置</span></div>
+ <div id="connection-list" aria-label="已保存的API连接"></div>
+ <button id="new-connection" type="button">＋ 添加连接</button>
+ <form id="connection-editor" hidden>
+  <div class="settings-heading" id="connection-editor-title">添加连接</div>
+  <label for="connection-kind">服务商</label><select id="connection-kind"></select>
+  <div id="connection-address-slot"></div>
+  <label for="api-key">API Key</label><input id="api-key" type="password" autocomplete="off" spellcheck="false" placeholder="已保存时留空保留">
+  <label for="connection-model">模型</label><div class="model-input-row"><input id="connection-model" maxlength="200" spellcheck="false" placeholder="填写模型 ID"><button id="query-models" type="button">查询模型</button></div>
+  <details id="model-picker" class="settings-disclosure" hidden><summary>选择已查询模型</summary><label for="model-filter" class="sr-only">搜索模型</label><input id="model-filter" type="search" placeholder="搜索模型"><p id="model-count" class="hint"></p><div id="model-list" aria-label="模型目录"></div></details>
+  <details id="connection-advanced" class="settings-disclosure"><summary>更多连接选项</summary>
+   <label for="connection-name">备注名称</label><input id="connection-name" maxlength="60" required>
+   <div id="connection-advanced-address"><div id="connection-url-field"><label for="connection-url">API 地址</label><input id="connection-url" type="url" required maxlength="2048" spellcheck="false" placeholder="https://example.com/v1"></div></div>
+   <label class="check"><input id="connection-primary" type="checkbox">设为主用</label>
+   <label class="check"><input id="connection-fallback" type="checkbox">允许作为备用</label>
+   <p class="hint">修改地址后需重新填写Key。支持OpenAI兼容聊天接口。</p>
+  </details>
+  <div class="actions"><button id="save-connection" type="submit">保存</button><button id="cancel-connection" type="button">收起</button></div>
+ </form>
+ <div class="settings-preferences">
+  <label class="check"><input id="auto-fallback" type="checkbox">失败时自动使用备用</label>
+  <p class="hint">备用会接收相同上下文，可能产生额外费用。</p>
+  <label class="check"><input id="interactions" type="checkbox" checked>生活互动时回应</label>
+  <label class="check"><input id="memory-enabled" type="checkbox">记住交流中的小事</label>
+  <p class="hint">原文发给API提炼，另计费用；关闭后保留已有记忆。</p>
+ </div>
+ <div id="reply-controls" hidden><p id="route-status" role="status"></p><div class="actions"><button id="stop-reply" disabled>停止回复</button><button id="retry-reply" disabled>重试回复</button></div></div>
+ <p id="memory-settings-alert" class="settings-alert" role="status" hidden></p>
+ <details id="settings-more" class="settings-disclosure"><summary>更多设置与说明</summary>
+  <div class="data-controls">
+   <div class="settings-heading">记忆维护</div>
+   <div class="actions"><button id="memory-flush" type="button">整理待办</button><button id="memory-retry" type="button">重试整理</button><button id="memory-model" type="button">重试本地模型</button></div>
+   <p id="memory-settings-status" class="hint" role="status"></p>
+  </div>
+  <p class="hint">每批最多5轮交流、5条生活事件，发送给主用或已启用的备用API。</p>
+  <p class="hint">首次使用需下载本地模型；失败或取消的API请求仍可能计费。</p>
+  <p id="database-path" class="hint path"></p>
+  <div class="data-controls"><button id="backup-chat" type="button">备份交流与记忆</button><p class="hint">含原始交流与记忆，不含Key、养成或琴盘存档。请妥善保管。</p></div>
+  <details id="restore-chat" class="settings-disclosure"><summary>从交流备份恢复</summary>
+   <p class="hint">下次启动时替换交流与记忆，并保留恢复前副本。养成、琴盘不变，Key可能需重填。</p>
+   <label for="restore-choice">选择备份</label><select id="restore-choice"></select>
+   <div class="actions"><button id="restore-select" type="button">恢复所选备份</button><button id="restore-cancel" type="button" hidden>取消待恢复任务</button></div>
+   <p id="restore-status" class="hint" role="status"></p>
+   <div id="restore-confirm" class="connection-confirm" hidden><p id="restore-confirm-text"></p><div class="actions"><button id="restore-confirm-yes" type="button">确认安排恢复</button><button id="restore-confirm-no" type="button">返回</button></div></div>
+  </details>
+  <div class="data-controls"><button id="export-diagnostics" type="button">导出诊断摘要</button><p class="hint">仅含版本与事件计数，不含交流内容、Key或原始日志。</p></div>
+  <div class="data-controls"><button id="clear-history">清空交流与记忆</button><div id="clear-confirm" hidden><span>删除全部原始交流、记忆、来源和整理任务？此操作无法撤销。</span><button id="confirm-clear">确认清空</button><button id="cancel-clear">保留</button></div></div>
+ </details>
+</section>
+<div id="notice" role="status" aria-live="polite"></div>
+<section id="messages" aria-label="只读交流记录" tabindex="0" hidden></section>
+</main>
+<div class="resize" data-resize="North"></div><div class="resize" data-resize="South"></div><div class="resize" data-resize="West"></div><div class="resize" data-resize="East"></div>
+<div class="resize" data-resize="NorthWest"></div><div class="resize" data-resize="NorthEast"></div><div class="resize" data-resize="SouthWest"></div><div class="resize" data-resize="SouthEast"></div>
+<script type="module" src="src/chat-window.js"></script></body></html>

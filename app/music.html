@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><title>Moon·月 · 小小琴盘</title>
+<link rel="stylesheet" href="extension.css"><link rel="stylesheet" href="music.css"></head>
+<body data-extension="music" data-view="free"><main class="extension-shell" aria-label="小小琴盘">
+<header class="extension-header" title="按住标题拖动">
+ <span class="extension-moon">☾</span><div><div class="extension-title">小小琴盘</div></div>
+ <div class="extension-controls">
+  <button id="extension-pin" aria-label="取消置顶" aria-pressed="true" title="取消置顶"><svg viewBox="0 0 24 24"><path d="M8 3h8l-1 7 4 4H5l4-4zM12 14v7"/></svg></button>
+  <button id="extension-close" aria-label="关闭琴盘窗口" title="关闭"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+ </div>
+</header>
+<div id="extension-error" role="status" hidden></div>
+<div class="music-actions">
+ <button id="enable-audio">启用琴声</button><span id="free-key" class="hint"></span>
+ <button id="choose-song">选首曲子</button><button id="back-free" hidden>返回小琴</button>
+ <button id="settings-toggle" aria-expanded="false" aria-controls="music-settings" title="小设置">♫ <span class="sr-only">小设置</span></button>
+</div>
+<section id="song-setup" hidden aria-label="选曲准备">
+ <div class="song-row"><label class="sr-only" for="song">选择曲目</label><select id="song"></select><button id="random-song">随她选一首</button></div>
+ <div id="song-meta" class="song-meta"></div><div id="record-label"></div>
+ <div class="mode-tabs" role="tablist" aria-label="练习玩法"><button role="tab" data-mode="sight" aria-selected="true">光流</button><button role="tab" data-mode="mole" aria-selected="false">地鼠</button></div>
+ <details id="practice-preferences"><summary>练习偏好</summary><div class="practice-options">
+ <label for="judgment">判定 <select id="judgment"><option value="recommended">随谱推荐</option><option value="coarse">粗判</option><option value="strict">严判</option><option value="ultra">超严判</option></select></label><span id="judgment-info">±120ms</span>
+ <label class="assist-option"><input id="assist" type="checkbox" checked>她帮你补奏</label></div></details>
+ <div class="play-controls"><button id="play" disabled>开始练习</button><button id="demo" disabled>听她弹</button></div>
+</section>
+<div id="round-controls" class="play-controls" hidden><span id="playing-title"></span><button id="pause" disabled>暂停</button><button id="stop" disabled>结束</button></div>
+<div id="music-status" role="status" aria-live="polite">启用琴声，随手弹一段吧。</div>
+<div id="music-stage" hidden><canvas id="flow" aria-label="玩家声部光流，音符下沿到达亮线时按对应字母键"></canvas><div id="flow-guide" hidden><span id="flow-instruction">音符下沿碰亮线时按键</span><span class="flow-octaves"><span class="flow-low">低</span><span class="flow-mid">中</span><span class="flow-high">高</span></span></div><div id="stage-caption"></div><span id="count-in"></span></div>
+<div id="music-keyboard" role="group" aria-label="三排七阶琴键，高中低三个八度"></div>
+<progress id="song-progress" aria-label="曲目进度" max="1" value="0" hidden></progress>
+<div id="round-result" class="play-controls" hidden><button id="again">再来一次</button><button id="change-song">换首曲子</button><button id="result-free">返回小琴</button></div>
+<div class="music-footer"><span id="round-label">随手弹</span></div>
+<aside id="music-settings" hidden aria-label="小设置"><div class="settings-heading"><h3>小设置</h3><button id="settings-close" title="关闭小设置">×</button></div>
+ <div class="music-toolbar"><label for="volume">音量 <input id="volume" type="range" min="0" max="80" value="25"></label><button id="mute" aria-pressed="false">静音</button></div>
+<section class="music-help"><h3>操作与音源</h3>
+ <p>高音 Q W E R T Y U · 中音 A S D F G H J · 低音 Z X C V B N M；也可点击琴键。按住不重复判定，只在琴盘窗口接收键盘。</p>
+ <p>光流和地鼠都只提示你要弹的音，“听她弹”也只展示你的声部，声音保持完整合奏。光流音符下沿到达白色亮线时，按音符上的字母键；蓝色为低音、紫色为中音、金色为高音，同拍跨八度会分开显示。拉高窗口可以看到更长的预告。和弦需要分别按下对应键；命中九成并少量误触即可通过，没有分数或连击。</p>
+ <p>曲谱保留真实节奏，密集段自动标为红谱或高难谱；判定可选粗判±120ms、严判±70ms、超严判±40ms，通过分别记录。开局后不可改判定。她负责的音可静音，不改变判定；“听她弹”始终完整示范。失焦暂停练习，恢复有预备拍；关闭窗口停止声音。</p>
+ <label for="timing-offset">判定微调（正值：亮线提示提前） <input id="timing-offset" type="range" min="-200" max="200" step="10" value="0"><output id="offset-value">0 ms</output></label>
+ <p>琴键随曲目调性映射。Salamander Grand Piano · Alexander Holm · CC-BY-3.0；本地钢琴录音移调播放，远离原采样音域时音色会有变化。详细署名见随附音源目录。</p>
+</section>
+</aside>
+</main>
+<div class="resize" data-resize="North" aria-hidden="true"></div>
+<div class="resize" data-resize="South" aria-hidden="true"></div>
+<div class="resize" data-resize="West" aria-hidden="true"></div>
+<div class="resize" data-resize="East" aria-hidden="true"></div>
+<div class="resize" data-resize="NorthWest" aria-hidden="true"></div>
+<div class="resize" data-resize="NorthEast" aria-hidden="true"></div>
+<div class="resize" data-resize="SouthWest" aria-hidden="true"></div>
+<div class="resize" data-resize="SouthEast" aria-hidden="true"></div>
+<script type="module" src="src/music-window.js"></script></body></html>

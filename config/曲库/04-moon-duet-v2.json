@@ -1,0 +1,134 @@
+{
+  "formatVersion": 2,
+  "version": 1,
+  "credit": "月之少女项目 · 原创练习短句",
+  "layout": "lyre21",
+  "id": "moon-duet-v2",
+  "title": "月光合奏 · G调与双音",
+  "key": "G",
+  "bpm": 100,
+  "beats": 11,
+  "lyre21": {
+    "baseOctave": 3,
+    "maxChord": 2
+  },
+  "notes": [
+    {
+      "pitch": 55,
+      "beat": 0,
+      "duration": 0.7
+    },
+    {
+      "pitch": 59,
+      "beat": 0,
+      "duration": 0.7
+    },
+    {
+      "pitch": 62,
+      "beat": 0,
+      "duration": 0.7
+    },
+    {
+      "pitch": 64,
+      "beat": 1,
+      "duration": 0.7
+    },
+    {
+      "pitch": 66,
+      "beat": 2,
+      "duration": 0.7
+    },
+    {
+      "pitch": 67,
+      "beat": 3,
+      "duration": 0.7
+    },
+    {
+      "pitch": 60,
+      "beat": 4,
+      "duration": 0.7
+    },
+    {
+      "pitch": 61,
+      "beat": 4.5,
+      "duration": 0.35
+    },
+    {
+      "pitch": 62,
+      "beat": 5,
+      "duration": 0.7
+    },
+    {
+      "pitch": 59,
+      "beat": 6,
+      "duration": 0.7
+    },
+    {
+      "pitch": 62,
+      "beat": 6,
+      "duration": 0.7
+    },
+    {
+      "pitch": 67,
+      "beat": 6,
+      "duration": 0.7
+    },
+    {
+      "pitch": 66,
+      "beat": 7,
+      "duration": 0.7
+    },
+    {
+      "pitch": 67,
+      "beat": 8,
+      "duration": 2
+    }
+  ],
+  "accompaniment": [
+    {
+      "pitch": 43,
+      "beat": 0,
+      "duration": 2
+    },
+    {
+      "pitch": 47,
+      "beat": 0,
+      "duration": 2
+    },
+    {
+      "pitch": 50,
+      "beat": 0,
+      "duration": 2
+    },
+    {
+      "pitch": 48,
+      "beat": 4,
+      "duration": 2
+    },
+    {
+      "pitch": 52,
+      "beat": 4,
+      "duration": 2
+    },
+    {
+      "pitch": 55,
+      "beat": 4,
+      "duration": 2
+    },
+    {
+      "pitch": 43,
+      "beat": 8,
+      "duration": 2
+    },
+    {
+      "pitch": 50,
+      "beat": 8,
+      "duration": 2
+    },
+    {
+      "pitch": 55,
+      "beat": 8,
+      "duration": 2
+    }
+  ]
+}

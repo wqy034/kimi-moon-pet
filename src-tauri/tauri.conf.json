@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Moon·月",
+  "version": "0.1.1",
+  "identifier": "dev.yuezhi.pet",
+  "build": {
+    "frontendDist": "../app"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "security": {
+      "assetProtocol": {
+        "enable": true,
+        "scope": []
+      }
+    },
+    "windows": [
+      {
+        "label": "main",
+        "title": "Moon·月",
+        "width": 320,
+        "height": 360,
+        "transparent": true,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "resizable": false,
+        "shadow": false
+      }
+    ]
+  }
+}

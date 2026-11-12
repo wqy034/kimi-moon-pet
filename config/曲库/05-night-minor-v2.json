@@ -1,0 +1,100 @@
+{
+  "formatVersion": 2,
+  "version": 1,
+  "credit": "月之少女项目 · 原创练习短句",
+  "layout": "lyre21",
+  "id": "night-minor-v2",
+  "title": "夜色短句 · A小调",
+  "key": "Am",
+  "bpm": 88,
+  "beats": 10,
+  "notes": [
+    {
+      "pitch": 60,
+      "beat": 0,
+      "duration": 0.7
+    },
+    {
+      "pitch": 64,
+      "beat": 0,
+      "duration": 0.7
+    },
+    {
+      "pitch": 69,
+      "beat": 0,
+      "duration": 0.7
+    },
+    {
+      "pitch": 71,
+      "beat": 1,
+      "duration": 0.7
+    },
+    {
+      "pitch": 72,
+      "beat": 2,
+      "duration": 0.7
+    },
+    {
+      "pitch": 71,
+      "beat": 3,
+      "duration": 0.7
+    },
+    {
+      "pitch": 68,
+      "beat": 3.5,
+      "duration": 0.3
+    },
+    {
+      "pitch": 69,
+      "beat": 4,
+      "duration": 0.7
+    },
+    {
+      "pitch": 65,
+      "beat": 5,
+      "duration": 0.7
+    },
+    {
+      "pitch": 64,
+      "beat": 6,
+      "duration": 0.7
+    },
+    {
+      "pitch": 69,
+      "beat": 7,
+      "duration": 2
+    }
+  ],
+  "accompaniment": [
+    {
+      "pitch": 45,
+      "beat": 0,
+      "duration": 2
+    },
+    {
+      "pitch": 52,
+      "beat": 0,
+      "duration": 2
+    },
+    {
+      "pitch": 45,
+      "beat": 4,
+      "duration": 2
+    },
+    {
+      "pitch": 52,
+      "beat": 4,
+      "duration": 2
+    },
+    {
+      "pitch": 45,
+      "beat": 7,
+      "duration": 2
+    },
+    {
+      "pitch": 52,
+      "beat": 7,
+      "duration": 2
+    }
+  ]
+}

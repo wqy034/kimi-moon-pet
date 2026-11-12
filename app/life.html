@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>Moon·月 · 暗月的小生活</title>
+<link rel="stylesheet" href="extension.css"><link rel="stylesheet" href="life.css"></head>
+<body data-extension="life">
+<main class="extension-shell" aria-label="暗月的小生活">
+<header class="extension-header" title="按住标题拖动">
+ <span class="extension-moon">☾</span><div><div class="extension-title">暗月的小生活</div></div>
+ <div class="extension-controls">
+  <button id="extension-pin" aria-label="取消置顶" aria-pressed="true" title="取消置顶"><svg viewBox="0 0 24 24"><path d="M8 3h8l-1 7 4 4H5l4-4zM12 14v7"/></svg></button>
+  <button id="extension-close" aria-label="关闭生活窗口" title="关闭"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+ </div>
+</header>
+<div id="extension-error" role="status" hidden></div>
+<div id="life">
+  <div class="life-heading"><span class="life-caption">留一点时间，陪陪暗月</span><span id="life-wallet">✦ 小小积蓄</span></div>
+  <div class="life-tabs" role="tablist" aria-label="小生活">
+    <button role="tab" data-life-tab="home" aria-controls="life-content" aria-selected="true">照顾她</button>
+    <button role="tab" data-life-tab="shop" aria-controls="life-content" aria-selected="false">小铺</button>
+    <button role="tab" data-life-tab="daily" aria-controls="life-content" aria-selected="false">日常</button>
+  </div>
+  <div id="life-notice" role="status" aria-live="polite"></div>
+  <div id="life-content" role="tabpanel"></div>
+</div>
+</main>
+<div class="resize" data-resize="North" aria-hidden="true"></div>
+<div class="resize" data-resize="South" aria-hidden="true"></div>
+<div class="resize" data-resize="West" aria-hidden="true"></div>
+<div class="resize" data-resize="East" aria-hidden="true"></div>
+<div class="resize" data-resize="NorthWest" aria-hidden="true"></div>
+<div class="resize" data-resize="NorthEast" aria-hidden="true"></div>
+<div class="resize" data-resize="SouthWest" aria-hidden="true"></div>
+<div class="resize" data-resize="SouthEast" aria-hidden="true"></div>
+<script type="module" src="src/life-window.js"></script>
+</body></html>

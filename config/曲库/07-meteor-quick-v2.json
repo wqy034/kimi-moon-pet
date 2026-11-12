@@ -1,0 +1,139 @@
+{
+  "formatVersion": 2,
+  "version": 1,
+  "credit": "月之少女项目 · 原创练习短句",
+  "layout": "lyre21",
+  "id": "meteor-quick-v2",
+  "title": "流星快拍 · 高难谱",
+  "key": "C",
+  "bpm": 120,
+  "beats": 9,
+  "minGapMs": 100,
+  "lyre21": {
+    "maxChord": 3
+  },
+  "notes": [
+    {
+      "pitch": 60,
+      "beat": 0.0,
+      "duration": 0.15
+    },
+    {
+      "pitch": 62,
+      "beat": 0.2,
+      "duration": 0.15
+    },
+    {
+      "pitch": 64,
+      "beat": 0.4,
+      "duration": 0.15
+    },
+    {
+      "pitch": 67,
+      "beat": 0.6,
+      "duration": 0.15
+    },
+    {
+      "pitch": 64,
+      "beat": 0.8,
+      "duration": 0.15
+    },
+    {
+      "pitch": 62,
+      "beat": 1.0,
+      "duration": 0.15
+    },
+    {
+      "pitch": 60,
+      "beat": 1.2,
+      "duration": 0.15
+    },
+    {
+      "pitch": 62,
+      "beat": 1.4,
+      "duration": 0.15
+    },
+    {
+      "pitch": 64,
+      "beat": 1.6,
+      "duration": 0.15
+    },
+    {
+      "pitch": 67,
+      "beat": 1.8,
+      "duration": 0.15
+    },
+    {
+      "pitch": 69,
+      "beat": 2.0,
+      "duration": 0.15
+    },
+    {
+      "pitch": 67,
+      "beat": 2.2,
+      "duration": 0.15
+    },
+    {
+      "pitch": 64,
+      "beat": 2.4,
+      "duration": 0.15
+    },
+    {
+      "pitch": 62,
+      "beat": 2.6,
+      "duration": 0.15
+    },
+    {
+      "pitch": 60,
+      "beat": 2.8,
+      "duration": 0.15
+    },
+    {
+      "pitch": 60,
+      "beat": 3.0,
+      "duration": 0.15
+    },
+    {
+      "pitch": 60,
+      "beat": 5,
+      "duration": 1
+    },
+    {
+      "pitch": 64,
+      "beat": 5,
+      "duration": 1
+    },
+    {
+      "pitch": 67,
+      "beat": 5,
+      "duration": 1
+    },
+    {
+      "pitch": 72,
+      "beat": 7,
+      "duration": 1
+    }
+  ],
+  "accompaniment": [
+    {
+      "pitch": 48,
+      "beat": 0,
+      "duration": 2
+    },
+    {
+      "pitch": 55,
+      "beat": 0,
+      "duration": 2
+    },
+    {
+      "pitch": 48,
+      "beat": 5,
+      "duration": 2
+    },
+    {
+      "pitch": 55,
+      "beat": 5,
+      "duration": 2
+    }
+  ]
+}
